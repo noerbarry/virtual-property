@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Virtual Property</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
+</head>
+<body>
+<!-- viewer embed code !-->
+<iframe id="svt_iframe_47d1e990583c9c67424d369f3414728e" allowfullscreen allow="gyroscope; accelerometer; xr; microphone *" width="100%" height="600px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://panorago.com/viewer/index.php?code=47d1e990583c9c67424d369f3414728e"></iframe>
+<br><br>
+<button disabled onclick="goto_room(469);">GO TO HOME</button> <!-- replace the id of the room !-->
+<button disabled onclick="goto_next_room();">GO TO NEXT ROOM</button>
+<button disabled onclick="goto_prev_room();">GO TO PREV ROOM</button>
+<br><br>
+<input placeholder="latitude" id="latitude" type="text"> <input placeholder="longitude" id="longitude" type="text">
+<button disabled onclick="goto_room_coordinates();">GO TO COORDINATES</button>
+<script>
+    var id_iframe = "svt_iframe_d82c8d1619ad8176d665453cfb2e55f0";
+    var iframe_svt = document.getElementById(id_iframe).contentWindow;
+    window.addEventListener("message", function(evt) {
+        if(evt.data.payload=="initialized") {
+            //Tour initialized -> put your code here
+            var buttons = document.querySelectorAll("button");
+            for (var i = 0; i < buttons.length; ++i) {
+                buttons[i].disabled = false;
+            }
+        }
+    }, false);
+    function goto_room(id_room) {
+        //function to go to the room via its id
+        iframe_svt.postMessage({"payload":"goto_room","id_room":id_room}, "*");
+    }
+    function goto_next_room() {
+        //function to go to the next room
+        iframe_svt.postMessage({"payload":"goto_next_room"}, "*");
+    }
+    function goto_prev_room() {
+        //function to go to the previous room
+        iframe_svt.postMessage({"payload":"goto_prev_room"}, "*");
+    }
+    function goto_room_coordinates() {
+        //function to go to nearest room based on given coordinates
+        var lat = document.getElementById("latitude").value;
+        var lon = document.getElementById("longitude").value;
+        iframe_svt.postMessage({"payload":"goto_room_coordinates","coordinates":[lat,lon]}, "*");
+    }
+</script>
+</body>
+</html>
