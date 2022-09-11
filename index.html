@@ -1,5 +1,28 @@
 <html>
+<style>
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:60px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
 
+.my-float{
+	margin-top:16px;
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=6281297137230&text=Hallo%20rumahmillenniumcity%20saya%20ingin%20tanya%20info millennium city" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
 <head>
 <!-- Facebook Pixel Code -->
 <script>
@@ -38,7 +61,15 @@
 </head>
 <body>
 <!-- viewer embed code !-->
-<iframe id="svt_iframe_47d1e990583c9c67424d369f3414728e" allowfullscreen allow="gyroscope; accelerometer; xr; microphone *" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://panorago.com/viewer/index.php?code=47d1e990583c9c67424d369f3414728e"></iframe> 
+<iframe id="svt_iframe_47d1e990583c9c67424d369f3414728e" allowfullscreen allow="gyroscope; accelerometer; xr; microphone *" width="100%" height="600px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://panorago.com/viewer/index.php?code=47d1e990583c9c67424d369f3414728e"></iframe> 
+<br><br>
+<button disabled onclick="goto_room(469);">GO TO MiLLENNIUM CITY</button> <!-- replace the id of the room !-->
+<button disabled onclick="goto_next_room();">GO TO NEXT ROOM</button>
+<button disabled onclick="goto_prev_room();">GO TO PREV ROOM</button>
+<br><br>
+<input placeholder="latitude" id="latitude" type="text"> <input placeholder="longitude" id="longitude" type="text">
+<button disabled onclick="goto_room_coordinates();">GO TO COORDINATES</button>
+
 <script>
     var id_iframe = "svt_iframe_d82c8d1619ad8176d665453cfb2e55f0";
     var iframe_svt = document.getElementById(id_iframe).contentWindow;
